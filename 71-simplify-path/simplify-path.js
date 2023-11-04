@@ -5,7 +5,7 @@
 var simplifyPath = function(path) {
   let stack = [];
   path = path.split('/');
-  console.log(path)
+ 
   for (let i=0;i<path.length;i++) {
       if (path[i]=='.' || path[i]=='') continue;
       if (path[i]=='..') stack.pop();
