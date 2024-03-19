@@ -3,27 +3,19 @@
  * @return {string}
  */
 var longestPalindrome = function(s) {
-  if(s.length<2) return s;
-    
-    let longest = "";
-    
-    function isPal(left,right){
-        while(s[left]===s[right] && left >=0 && right<s.length){
-            left--;
-            right++;
+    let i=0;
+    for(let j= s.length -1; j >=0; j--){
+      if(i<j){
+        let subStr = s.substring(i, j);
+        subStr = reverseStr(subStr)
+        if(s.includes(subStr)){
+          return subStr
         }
-        return s.slice(left+1,right)
+      }
+      i++;
+
     }
-    
-    for(let i=0;i<s.length;i++){
-     let oddPal = isPal(i,i);
-     let evenPal = isPal(i,i+1);
-        
-   let longestPal = oddPal.length > evenPal.length ? oddPal : evenPal;
-     if(longestPal.length> longest.length){
-         longest = longestPal
-     }   
-    };
-    return longest;
 };
+
+const reverseStr= (str) => (str.split("").reverse().join(""))
 
